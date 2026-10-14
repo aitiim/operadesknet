@@ -6,9 +6,9 @@ use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
+#[ORM\Table(name: '`user`')]
 class User
 {
-    
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
@@ -20,35 +20,38 @@ class User
     #[ORM\Column(length: 255)]
     private ?string $password = null;
 
-    #[ORM\Column(length: 255, nullable: true)]
-    private ?string $description = null;
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
 
-    public function getUsername() {
+    public function setId(int $id): static
+    {
+        $this->id = $id;
+
+        return $this;
+    }
+
+    public function getUsername(): ?string
+    {
         return $this->username;
     }
 
-    public function getPassword() {
+    public function setUsername(string $username): static
+    {
+        $this->username = $username;
+
+        return $this;
+    }
+
+    public function getPassword(): ?string
+    {
         return $this->password;
     }
 
-    public function setUsername(string $username) {
-        $this->username = $username;
-        return $this;
-    }
-
-    public function setPassword(string $password) {
+    public function setPassword(string $password): static
+    {
         $this->password = $password;
-        return $this;
-    }
-
-    public function getDescription(): ?string
-    {
-        return $this->description;
-    }
-
-    public function setDescription(?string $description): static
-    {
-        $this->description = $description;
 
         return $this;
     }
