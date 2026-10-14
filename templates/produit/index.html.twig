@@ -1,0 +1,21 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Mes produits</title>
+</head>
+<body>
+    <h1>Liste des produits</h1>
+
+    {% for produit in produits %}
+        <article>
+            <h2>{{ produit.nom }}</h2>
+            <p>Prix : {{ produit.prix }} €</p>
+            <p>Quantité : {{ produit.quantite }}</p>
+        </article>
+    {% else %}
+        <p>Aucun produit trouvé.</p>
+    {% endfor %}
+</body>
+</html>
